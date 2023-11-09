@@ -9,83 +9,296 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>898</width>
-    <height>668</height>
+    <width>852</width>
+    <height>630</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>JurassicSCADA</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="btnTwo">
+   <widget class="QWidget" name="mainSCADA" native="true">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>350</y>
-      <width>271</width>
-      <height>71</height>
+      <x>0</x>
+      <y>0</y>
+      <width>851</width>
+      <height>631</height>
      </rect>
     </property>
-    <property name="minimumSize">
-     <size>
-      <width>271</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Impact</family>
-      <pointsize>26</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Click Me Second!</string>
-    </property>
+    <widget class="QPushButton" name="btnOne">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>350</y>
+       <width>221</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Impact</family>
+       <pointsize>26</pointsize>
+      </font>
+     </property>
+     <property name="whatsThis">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Click Me First!</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mainText">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>160</y>
+       <width>420</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>48</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Hello World!</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnTwo">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>350</y>
+       <width>271</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>271</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Impact</family>
+       <pointsize>26</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Click Me Second!</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="camerabtn">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>470</y>
+       <width>281</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>48</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Cameras</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QPushButton" name="btnOne">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>350</y>
-      <width>221</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Impact</family>
-      <pointsize>26</pointsize>
-     </font>
-    </property>
-    <property name="whatsThis">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="text">
-     <string>Click Me First!</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mainText">
+   <widget class="QWidget" name="cameraScreen" native="true">
     <property name="enabled">
      <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>160</y>
-      <width>420</width>
-      <height>80</height>
+      <x>0</x>
+      <y>0</y>
+      <width>851</width>
+      <height>631</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>48</pointsize>
-      <italic>true</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Hello World!</string>
-    </property>
+    <widget class="QGraphicsView" name="cameraFootage">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>30</y>
+       <width>641</width>
+       <height>351</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="nightVisionON">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>430</y>
+       <width>121</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Night Vision ON</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="camerabtn1">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>430</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CAM 1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="camerabtn2">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>430</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CAM 2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="camerabtn4">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>510</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CAM 4</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="camerabtn3">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>430</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CAM 3</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="camerabtn6">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>510</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CAM 6</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="camerabtn5">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>510</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CAM 5</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="nightVisionOFF">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>510</y>
+       <width>121</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Night Vision OFF</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="cameraLabel">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>160</y>
+       <width>221</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Gill Sans MT Ext Condensed Bold</family>
+       <pointsize>36</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Camera 1 Footage</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="nigthVisionLabel">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>360</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Night Vision: OFF</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cameraBackbtn">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>570</y>
+       <width>75</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;Main</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
