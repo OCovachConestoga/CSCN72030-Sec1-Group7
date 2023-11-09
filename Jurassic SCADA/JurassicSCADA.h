@@ -12,7 +12,7 @@ public:
     ~JurassicSCADA();
 
 private:
-    Ui::JurassicSCADAClass ui;
+    Ui::JurassicSCADA ui;
 
 private slots:
     void on_btnOne_clicked();

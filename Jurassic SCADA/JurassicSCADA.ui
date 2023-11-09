@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>JurassicSCADAClass</class>
- <widget class="QMainWindow" name="JurassicSCADAClass">
+ <class>JurassicSCADA</class>
+ <widget class="QMainWindow" name="JurassicSCADA">
   <property name="enabled">
    <bool>true</bool>
   </property>
@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>851</width>
+    <width>898</width>
     <height>668</height>
    </rect>
   </property>
