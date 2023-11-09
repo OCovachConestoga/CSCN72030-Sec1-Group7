@@ -13,4 +13,8 @@ public:
 
 private:
     Ui::JurassicSCADAClass ui;
+
+private slots:
+    void on_btnOne_clicked();
+    void on_btnTwo_clicked();
 };
