@@ -3,6 +3,9 @@
 ###############################################################################
 * text=auto
 
+*.vcxproj.filters merge=union
+*.vcxproj merge=union
+
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
