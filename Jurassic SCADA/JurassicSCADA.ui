@@ -128,24 +128,11 @@
       <height>631</height>
      </rect>
     </property>
-    <widget class="QGraphicsView" name="cameraFootage">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>30</y>
-       <width>641</width>
-       <height>351</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
-    </widget>
     <widget class="QPushButton" name="nightVisionON">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>430</y>
+       <x>100</x>
+       <y>450</y>
        <width>121</width>
        <height>61</height>
       </rect>
@@ -235,8 +222,8 @@
     <widget class="QPushButton" name="nightVisionOFF">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>510</y>
+       <x>100</x>
+       <y>530</y>
        <width>121</width>
        <height>61</height>
       </rect>
@@ -245,33 +232,11 @@
       <string>Night Vision OFF</string>
      </property>
     </widget>
-    <widget class="QLabel" name="cameraLabel">
+    <widget class="QLabel" name="nightVisionLabel">
      <property name="geometry">
       <rect>
-       <x>310</x>
-       <y>160</y>
-       <width>221</width>
-       <height>81</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Gill Sans MT Ext Condensed Bold</family>
-       <pointsize>36</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Camera 1 Footage</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="nigthVisionLabel">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>360</y>
+       <x>80</x>
+       <y>430</y>
        <width>101</width>
        <height>16</height>
       </rect>
@@ -299,6 +264,33 @@
       <string>&lt;Main</string>
      </property>
     </widget>
+    <widget class="QLabel" name="cameraLabel">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>30</y>
+       <width>691</width>
+       <height>389</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/JurassicSCADA/Dinosaur 1.jpg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <zorder>nightVisionON</zorder>
+    <zorder>camerabtn1</zorder>
+    <zorder>camerabtn2</zorder>
+    <zorder>camerabtn4</zorder>
+    <zorder>camerabtn3</zorder>
+    <zorder>camerabtn6</zorder>
+    <zorder>camerabtn5</zorder>
+    <zorder>nightVisionOFF</zorder>
+    <zorder>cameraBackbtn</zorder>
+    <zorder>nightVisionLabel</zorder>
+    <zorder>cameraLabel</zorder>
    </widget>
   </widget>
  </widget>

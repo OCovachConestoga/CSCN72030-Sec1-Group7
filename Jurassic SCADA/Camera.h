@@ -1,36 +1,30 @@
 #pragma once
 
-#include "JurassicSCADA.h"
+#include "Ui_JurassicSCADA.h"
 
-class Camera : public JurassicSCADA
+class Camera
 {
-	int cameraID;
-	bool nightVision;
-	// int x;
-	// int y;
+	int* cameraID;
+	bool* nightVision;
+	QString* footage;
 
-private:
-
+public:
 	// Constructors
-	Camera();
-	Camera(int, bool);
+	Camera(QWidget* parent = nullptr);
+	Camera(int, bool, QString);
 
 	// Getters and Setters
 	void setCameraID(int);
 	int getCameraID();
 	void setNightVision(bool);
 	bool getNightVision();
-	// void setX(int);
-	// int getX();
-	// void setY(int);
-	// int getY();
+	void setFootage(QString);
+	QString getFootage();
 
 	// Destructor
 	~Camera();
 
 	// Camera functions
-	// void panUp(int);
-	// void panDown(int);
-	// void panLeft(int);
-	// void panRight(int);
+	void displayCameraFootage(Ui::JurassicSCADA*);
+	void displayNightVision(Ui::JurassicSCADA*);
 };

@@ -1,4 +1,5 @@
 #include "JurassicSCADA.h"
+#include "Camera.h"
 
 int main(int argc, char *argv[])
 {

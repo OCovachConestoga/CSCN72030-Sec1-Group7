@@ -31,9 +31,7 @@ std::string FileManagement::getFileName()
 
 // Destructor
 FileManagement::~FileManagement()
-{
-	delete this;
-}
+{}
 
 // File Management functions
 std::string* FileManagement::readFileData()
