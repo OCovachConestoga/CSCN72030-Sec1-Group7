@@ -19,7 +19,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7917BB57-5F02-4A6B-BF6E-B1C01C90AF20}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
@@ -89,17 +89,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Monorail.cpp" />
+    <ClCompile Include="Pen.cpp" />
+    <ClCompile Include="WeatherForecast.cpp" />
     <QtRcc Include="JurassicSCADA.qrc" />
     <QtUic Include="JurassicSCADA.ui" />
     <QtMoc Include="JurassicSCADA.h" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="ElectricFence.cpp" />
+    <ClCompile Include="FeedSchedule.cpp" />
     <ClCompile Include="FileManagement.cpp" />
+    <ClCompile Include="Gate.cpp" />
+    <ClCompile Include="Incubator.cpp" />
     <ClCompile Include="JurassicSCADA.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="ElectricFence.h" />
+    <ClInclude Include="FeedSchedule.h" />
     <ClInclude Include="FileManagement.h" />
+    <ClInclude Include="Gate.h" />
+    <ClInclude Include="Incubator.h" />
+    <ClInclude Include="Monorail.h" />
+    <ClInclude Include="Pen.h" />
+    <ClInclude Include="WeatherForecast.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
