@@ -10,15 +10,15 @@
 
 class JurassicSCADA : public QMainWindow
 {
-	Q_OBJECT;
-	Camera cameraArray[MAXCAMERAS];
+	Q_OBJECT
 
 public:
     JurassicSCADA(QWidget *parent = nullptr);
     ~JurassicSCADA();
 
-protected:
+private:
     Ui::JurassicSCADA ui;
+	Camera* cameraArray;
 
 public slots:
     void on_btnOne_clicked();
@@ -26,6 +26,7 @@ public slots:
 	
 	// ********* Camera Button handlers *********
 	void on_camerabtn_clicked();
+	void on_cameraBackbtn_clicked();
 	void on_camerabtn1_clicked();
 	void on_camerabtn2_clicked();
 	void on_camerabtn3_clicked();
@@ -33,10 +34,8 @@ public slots:
 	void on_camerabtn5_clicked();
 	void on_camerabtn6_clicked();
 	void on_camerabtnClicked(Camera);
-	void on_nightVisionON_clicked();
-	void on_nightVisionOFF_clicked();
-	void on_nightVisionbtnClicked(Camera);
-	void on_cameraBackbtn_clicked();
+	void on_nightVisionToggle_clicked();
+	void on_nightVisionbtnClicked(Camera*);
 	// ******************************************
 
 };

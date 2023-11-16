@@ -1,5 +1,5 @@
 #include "JurassicSCADA.h"
-
+#include "Camera.h"
 
 JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 {
@@ -7,19 +7,23 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
     ui.mainText->hide();
     ui.cameraScreen->hide();
 
-	//					************* Initialization of camera objects ******************
+
+	//********************************* Initialization of camera objects *******************************************
 	Camera c1(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1.jpg\"/></p></body></html>");
 	Camera c2(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 2.jpg\"/></p></body></html>");
 	Camera c3(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3.jpg\"/></p></body></html>");
 	Camera c4(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4.jpg\"/></p></body></html>");
 	Camera c5(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 5.jpg\"/></p></body></html>");
 	Camera c6(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6.jpg\"/></p></body></html>");
+	this->cameraArray = new Camera[6];
 	this->cameraArray[0] = c1;
 	this->cameraArray[1] = c2;
 	this->cameraArray[2] = c3;
 	this->cameraArray[3] = c4;
 	this->cameraArray[4] = c5;
 	this->cameraArray[5] = c6;
+	// *************************************************************************************************************
+
 }
 
 JurassicSCADA::~JurassicSCADA()
@@ -74,26 +78,98 @@ void JurassicSCADA::on_camerabtn6_clicked()
 {
 	on_camerabtnClicked(this->cameraArray[5]);
 }
+void JurassicSCADA::on_nightVisionToggle_clicked()
+{
+	on_nightVisionbtnClicked(this->cameraArray);
+}
 
 void JurassicSCADA::on_camerabtnClicked(Camera camera)
 {
 	camera.displayCameraFootage(&ui);
 }
 
-void JurassicSCADA::on_nightVisionON_clicked()
+// *********************** night vision logic to switch the image to a night vision filtered image before displaying ******************************
+void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera)
 {
-	//on_nightVisionbtnClicked();
-}
-void JurassicSCADA::on_nightVisionOFF_clicked()
-{
-	ui.nightVisionLabel->setText("Night Vision: OFF");
-}
+	
+	if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1.jpg\"/></p></body></html>" ||
+		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1 NV.jpg\"/></p></body></html>")
+	{
+		if (camera[0].getNightVision() == false)
+			camera[0].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1 NV.jpg\"/></p></body></html>");
+		else
+			camera[0].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1.jpg\"/></p></body></html>");
 
-void JurassicSCADA::on_nightVisionbtnClicked(Camera camera)
-{
-	camera.displayNightVision(&ui);
+		camera[0].displayNightVision(&ui);
+	}
+
+
+
+	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 2.jpg\"/></p></body></html>" ||
+		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 2 NV.jpg\"/></p></body></html>")
+	{
+		if (camera[1].getNightVision() == false)
+			camera[1].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 2 NV.jpg\"/></p></body></html>");
+		else
+			camera[1].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 2.jpg\"/></p></body></html>");
+
+		camera[1].displayNightVision(&ui);
+	}
+
+
+
+	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3.jpg\"/></p></body></html>" ||
+		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3 NV.jpg\"/></p></body></html>")
+	{
+		if (camera[2].getNightVision() == false)
+			camera[2].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3 NV.jpg\"/></p></body></html>");
+		else
+			camera[2].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3.jpg\"/></p></body></html>");
+
+		camera[2].displayNightVision(&ui);
+	}
+
+
+
+	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4.jpg\"/></p></body></html>" ||
+		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4 NV.jpg\"/></p></body></html>")
+	{
+		if (camera[3].getNightVision() == false)
+			camera[3].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4 NV.jpg\"/></p></body></html>");
+		else
+			camera[3].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4.jpg\"/></p></body></html>");
+
+		camera[3].displayNightVision(&ui);
+	}
+
+
+
+	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 5.jpg\"/></p></body></html>" ||
+		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 5 NV.jpg\"/></p></body></html>")
+	{
+		if (camera[4].getNightVision() == false)
+			camera[4].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 5 NV.jpg\"/></p></body></html>");
+		else
+			camera[4].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 5.jpg\"/></p></body></html>");
+
+		camera[4].displayNightVision(&ui);
+	}
+
+
+
+	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6.png\"/></p></body></html>" ||
+		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6 NV.jpg\"/></p></body></html>")
+	{	
+		if (camera[5].getNightVision() == false)
+			camera[5].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6 NV.jpg\"/></p></body></html>");
+		else
+			camera[5].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6.jpg\"/></p></body></html>");
+
+		camera[5].displayNightVision(&ui);
+	}
+	
 }
-// **********************************************************
+// *********************************************************************************************************************************
 
 
 

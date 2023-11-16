@@ -56,13 +56,22 @@ Camera::~Camera()
 // button event handlers using the main SCADA class function definitions
 void Camera::displayCameraFootage(Ui::JurassicSCADA* ui)
 {
+	// File IO here
 	ui->cameraLabel->setText(this->getFootage());
 }
 
 void Camera::displayNightVision(Ui::JurassicSCADA* ui)
 {
-	if(this->getNightVision() == true)
-		ui->nightVisionLabel->setText("ON");
+	if (this->getNightVision() == false)
+	{
+		// File IO here
+		this->setNightVision(true);
+		this->displayCameraFootage(ui);
+	}
 	else
-		ui->nightVisionLabel->setText("OFF");
+	{
+		// File IO here
+		this->setNightVision(false);
+		this->displayCameraFootage(ui);
+	}
 }

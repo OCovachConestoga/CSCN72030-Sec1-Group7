@@ -128,17 +128,17 @@
       <height>631</height>
      </rect>
     </property>
-    <widget class="QPushButton" name="nightVisionON">
+    <widget class="QPushButton" name="nightVisionToggle">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>450</y>
+       <x>170</x>
+       <y>470</y>
        <width>121</width>
        <height>61</height>
       </rect>
      </property>
      <property name="text">
-      <string>Night Vision ON</string>
+      <string>Night Vision Toggle</string>
      </property>
     </widget>
     <widget class="QPushButton" name="camerabtn1">
@@ -219,32 +219,6 @@
       <string>CAM 5</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="nightVisionOFF">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>530</y>
-       <width>121</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Night Vision OFF</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="nightVisionLabel">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>430</y>
-       <width>101</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Night Vision: OFF</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="cameraBackbtn">
      <property name="geometry">
       <rect>
@@ -280,17 +254,6 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <zorder>nightVisionON</zorder>
-    <zorder>camerabtn1</zorder>
-    <zorder>camerabtn2</zorder>
-    <zorder>camerabtn4</zorder>
-    <zorder>camerabtn3</zorder>
-    <zorder>camerabtn6</zorder>
-    <zorder>camerabtn5</zorder>
-    <zorder>nightVisionOFF</zorder>
-    <zorder>cameraBackbtn</zorder>
-    <zorder>nightVisionLabel</zorder>
-    <zorder>cameraLabel</zorder>
    </widget>
   </widget>
  </widget>

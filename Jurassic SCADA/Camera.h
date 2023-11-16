@@ -25,6 +25,7 @@ public:
 	~Camera();
 
 	// Camera functions
+	
 	void displayCameraFootage(Ui::JurassicSCADA*);
 	void displayNightVision(Ui::JurassicSCADA*);
 };
