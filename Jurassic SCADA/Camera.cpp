@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "FileManagement.h"
 
 // Constructors
 Camera::Camera(QWidget* parent)
@@ -56,7 +57,6 @@ Camera::~Camera()
 // button event handlers using the main SCADA class function definitions
 void Camera::displayCameraFootage(Ui::JurassicSCADA* ui)
 {
-	// File IO here
 	ui->cameraLabel->setText(this->getFootage());
 }
 
@@ -64,13 +64,11 @@ void Camera::displayNightVision(Ui::JurassicSCADA* ui)
 {
 	if (this->getNightVision() == false)
 	{
-		// File IO here
 		this->setNightVision(true);
 		this->displayCameraFootage(ui);
 	}
 	else
 	{
-		// File IO here
 		this->setNightVision(false);
 		this->displayCameraFootage(ui);
 	}

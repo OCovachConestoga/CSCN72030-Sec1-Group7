@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="JurassicSCADA">
+    <file>Camera.png</file>
     <file>Dinosaur 1 NV.jpg</file>
     <file>Dinosaur 2 NV.jpg</file>
     <file>Dinosaur 3 NV.jpg</file>

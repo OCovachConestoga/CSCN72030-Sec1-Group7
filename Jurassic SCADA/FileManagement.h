@@ -1,6 +1,7 @@
 #pragma once
 
-#include "JurassicSCADA.h"
+#include "io.h"
+#include "Ui_JurassicSCADA.h"
 #include <iostream>
 #include <fstream>
 #include <string.h>
@@ -22,7 +23,7 @@ public:
 	~FileManagement();
 
 	// File Management functions
-	std::string* readFileData();
+	void readFileData(Ui::JurassicSCADA*);
 
-	void saveDataToFile(JurassicSCADA*);
+	void saveDataToFile(Ui::JurassicSCADA*);
 };

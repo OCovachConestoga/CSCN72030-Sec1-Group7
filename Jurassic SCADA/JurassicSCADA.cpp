@@ -1,11 +1,10 @@
 #include "JurassicSCADA.h"
-#include "Camera.h"
 
 JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 {
     ui.setupUi(this);
-    ui.mainText->hide();
     ui.cameraScreen->hide();
+	ui.popUpWindow->hide();
 
 
 	//********************************* Initialization of camera objects *******************************************
@@ -14,7 +13,7 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 	Camera c3(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3.jpg\"/></p></body></html>");
 	Camera c4(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4.jpg\"/></p></body></html>");
 	Camera c5(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 5.jpg\"/></p></body></html>");
-	Camera c6(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6.jpg\"/></p></body></html>");
+	Camera c6(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6.png\"/></p></body></html>");
 	this->cameraArray = new Camera[6];
 	this->cameraArray[0] = c1;
 	this->cameraArray[1] = c2;
@@ -24,20 +23,20 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 	this->cameraArray[5] = c6;
 	// *************************************************************************************************************
 
+
+	//********************************* Initialization of File objects *******************************************
+	// file pointer for camera text files
+	FileManagement CameraSwitch("CameraSwitch.txt");
+	FileManagement NightVisionToggle("NightVisionToggle.txt");
+	this->FileArray = new FileManagement[10];
+	this->FileArray[0] = CameraSwitch;
+	this->FileArray[1] = NightVisionToggle;
+	// *************************************************************************************************************
+
 }
 
 JurassicSCADA::~JurassicSCADA()
 {}
-
-void JurassicSCADA::on_btnOne_clicked()
-{
-    ui.mainText->show();
-}
-
-void JurassicSCADA::on_btnTwo_clicked()
-{
-    ui.mainText->hide();
-}
 
 // *************** Main menu camera module buttons*****************
 void JurassicSCADA::on_camerabtn_clicked()
@@ -54,42 +53,49 @@ void JurassicSCADA::on_cameraBackbtn_clicked()
 //*****************************************************************
 
 // ********* Camera button handlers ***************
-void JurassicSCADA::on_camerabtn1_clicked() {
-	
-	on_camerabtnClicked(this->cameraArray[0]);
+void JurassicSCADA::on_camerabtn1_clicked() 
+{
+	on_camerabtnClicked(this->cameraArray[0], this->FileArray[0]);
 }
 void JurassicSCADA::on_camerabtn2_clicked()
 {
-	on_camerabtnClicked(this->cameraArray[1]);
+	on_camerabtnClicked(this->cameraArray[1], this->FileArray[0]);
 }
 void JurassicSCADA::on_camerabtn3_clicked()
 {
-	on_camerabtnClicked(this->cameraArray[2]);
+	on_camerabtnClicked(this->cameraArray[2], this->FileArray[0]);
 }
 void JurassicSCADA::on_camerabtn4_clicked()
 {
-	on_camerabtnClicked(this->cameraArray[3]);
+	on_camerabtnClicked(this->cameraArray[3], this->FileArray[0]);
 }
 void JurassicSCADA::on_camerabtn5_clicked()
 {
-	on_camerabtnClicked(this->cameraArray[4]);
+	on_camerabtnClicked(this->cameraArray[4], this->FileArray[0]);
 }
 void JurassicSCADA::on_camerabtn6_clicked()
 {
-	on_camerabtnClicked(this->cameraArray[5]);
+	on_camerabtnClicked(this->cameraArray[5], this->FileArray[0]);
+	
 }
 void JurassicSCADA::on_nightVisionToggle_clicked()
 {
-	on_nightVisionbtnClicked(this->cameraArray);
+	
+	on_nightVisionbtnClicked(this->cameraArray, this->FileArray[1]);
 }
 
-void JurassicSCADA::on_camerabtnClicked(Camera camera)
+void JurassicSCADA::on_camerabtnClicked(Camera camera, FileManagement fileptr)
 {
+	ui.popUpWindow->show();
+	ui.popUpWindow->update();
+	ui.popUpWindow->repaint();
+	fileptr.readFileData(&ui);
+	ui.popUpWindow->hide();
 	camera.displayCameraFootage(&ui);
 }
 
 // *********************** night vision logic to switch the image to a night vision filtered image before displaying ******************************
-void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera)
+void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera, FileManagement fileptr)
 {
 	
 	if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1.jpg\"/></p></body></html>" ||
@@ -163,7 +169,7 @@ void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera)
 		if (camera[5].getNightVision() == false)
 			camera[5].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6 NV.jpg\"/></p></body></html>");
 		else
-			camera[5].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6.jpg\"/></p></body></html>");
+			camera[5].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6.png\"/></p></body></html>");
 
 		camera[5].displayNightVision(&ui);
 	}

@@ -5,6 +5,7 @@
 #include <QtWidgets/QMainWindow>
 #include <stdbool.h>
 #include "Camera.h"
+#include "FileManagement.h"
 
 #define MAXCAMERAS	6
 
@@ -19,10 +20,9 @@ public:
 private:
     Ui::JurassicSCADA ui;
 	Camera* cameraArray;
+	FileManagement* FileArray;
 
 public slots:
-    void on_btnOne_clicked();
-    void on_btnTwo_clicked();
 	
 	// ********* Camera Button handlers *********
 	void on_camerabtn_clicked();
@@ -33,9 +33,9 @@ public slots:
 	void on_camerabtn4_clicked();
 	void on_camerabtn5_clicked();
 	void on_camerabtn6_clicked();
-	void on_camerabtnClicked(Camera);
+	void on_camerabtnClicked(Camera, FileManagement);
 	void on_nightVisionToggle_clicked();
-	void on_nightVisionbtnClicked(Camera*);
+	void on_nightVisionbtnClicked(Camera*, FileManagement);
 	// ******************************************
 
 };

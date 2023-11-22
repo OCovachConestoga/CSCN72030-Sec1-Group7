@@ -1,11 +1,12 @@
 #include "FileManagement.h"
+#include "windows.h"
 
 #define READ		1
 #define WRITE		2
 #define SEEK		3
 #define APPEND		4
 #define TRUNC		5
-#define MAX_LINES	50
+#define MAX_LINES	10
 
 // Constructors
 FileManagement::FileManagement()
@@ -34,10 +35,10 @@ FileManagement::~FileManagement()
 {}
 
 // File Management functions
-std::string* FileManagement::readFileData()
+void FileManagement::readFileData(Ui::JurassicSCADA* ui)
 {
 	// initializing empty data variable
-	std::string fileData[MAX_LINES]{};
+	std::string fileData;
 
 
 	// opening a read file
@@ -49,7 +50,6 @@ std::string* FileManagement::readFileData()
 	if (!fin)
 	{
 		std::cout << "ERROR: file \""<< this->fileName <<"\" not found..." << std::endl;
-		fileData[0] = "";
 	}
 	else
 	{
@@ -57,19 +57,21 @@ std::string* FileManagement::readFileData()
 		int i = 0;
 		while (fin.good())
 		{
-			fin >> fileData[i];
-			i++;
+			fin >> fileData;
+			QString popUpMessage = QString::fromStdString(fileData);
+			ui->Text->setText(popUpMessage);
+			ui->popUpWindow->update();
+			ui->popUpWindow->repaint();
+			Sleep(200);
 		}
 	}
 	
 	// close file to prevent corruption
 	fin.close();
-
-	return fileData;
 }
 
 // USE THE HIGHEST SUPER CLASS TO ALLOW AN ARRAY OF EACH SEPARATE MODULE
-void FileManagement::saveDataToFile(JurassicSCADA* arrayOfModules)
+void FileManagement::saveDataToFile(Ui::JurassicSCADA* arrayOfModules)
 {
 	//switch statement to save each important module data
 
