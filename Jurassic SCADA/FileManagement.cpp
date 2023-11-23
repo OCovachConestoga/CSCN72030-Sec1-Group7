@@ -73,39 +73,3 @@ void FileManagement::readFileData(Ui::JurassicSCADA* ui)
 	// close file to prevent corruption
 	fin.close();
 }
-
-// USE THE HIGHEST SUPER CLASS TO ALLOW AN ARRAY OF EACH SEPARATE MODULE
-void FileManagement::saveDataToFile(Ui::JurassicSCADA* arrayOfModules)
-{
-	//switch statement to save each important module data
-
-	for (int i = 0; i < 7; i++)
-	{
-		switch (i)
-		{
-		case 0:
-			// save Gates closed
-			break;
-		case 1:
-			// save electric fences on, and voltage
-			break;
-		case 2:
-			// save feed schedule important data
-			break;
-		case 3:
-			// save camera stuff, probably nothing
-			break;
-		case 4:
-			// save incubator eggs flipped
-			break;
-		case 5:
-			// save weather info, probably nothing
-			break;
-		case 6: 
-			// save Monorail cars active? or any other important data
-			break;
-		default:
-			break;
-		}
-	}
-}

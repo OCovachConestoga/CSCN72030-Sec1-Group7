@@ -24,6 +24,4 @@ public:
 
 	// File Management functions
 	void readFileData(Ui::JurassicSCADA*);
-
-	void saveDataToFile(Ui::JurassicSCADA*);
 };

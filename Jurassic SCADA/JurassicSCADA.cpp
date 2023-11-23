@@ -94,7 +94,7 @@ void JurassicSCADA::on_camerabtnClicked(Camera camera, FileManagement fileptr)
 // *********************** night vision logic to switch the image to a night vision filtered image before displaying ******************************
 void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera, FileManagement fileptr)
 {
-	
+	fileptr.readFileData(&ui);
 	if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1.jpg\"/></p></body></html>" ||
 		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1 NV.jpg\"/></p></body></html>")
 	{
