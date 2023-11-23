@@ -10,13 +10,19 @@
 
 FeedSchedule::FeedSchedule()
 {
-    
+    this->dataFileName      = "";
+    this->mealType          = "None";
+    this->feedingInterval   = NEVER;
+    this->timeSinceLastFed  = 0;
 }
 
 FeedSchedule::FeedSchedule(std::string dataFileName, std::string mealType, 
-    int mealFrequency, int timeSinceLastFed)
+    INTERVAL feedingInterval, int timeSinceLastFed)
 {
-    
+    this->dataFileName      = dataFileName;
+    this->mealType          = mealType;
+    this->feedingInterval   = feedingInterval;
+    this->timeSinceLastFed  = timeSinceLastFed;
 }
 
 FeedSchedule::~FeedSchedule()
@@ -41,7 +47,7 @@ int FeedSchedule::getTimeSinceLastFed() const
 
 void FeedSchedule::setTimeSinceLastFed(int time)
 {
-    
+    this->timeSinceLastFed = time;
 }
 
 std::string FeedSchedule::getMealType() const
@@ -51,17 +57,17 @@ std::string FeedSchedule::getMealType() const
 
 void FeedSchedule::setMealType(std::string type)
 {
-    
+    this->mealType = mealType;
 }
 
-int FeedSchedule::getMealFrequency() const
+int FeedSchedule::getFeedingInterval() const
 {
-    return this->mealFrequency;
+    return this->feedingInterval;
 }
 
-void FeedSchedule::setMealFrequency(int frequency)
+void FeedSchedule::setFeedingInterval(INTERVAL feedingInterval)
 {
-    
+    this->feedingInterval = feedingInterval;
 }
 
 void FeedSchedule::readFeedScheduleData()

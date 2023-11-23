@@ -10,13 +10,26 @@
 
 WeatherForecast::WeatherForecast()
 {
-    
+    this->dataFileName      = "";
+    this->temperature       = 0;
+    this->humidity          = 0;
+    this->airPressure       = 0;
+    this->windSpeed         = 0;
+    this->windDirection     = NORTH;
+    this->precipitation     = NONE;
+    this->status            = NORMAL;
 }
 
-WeatherForecast::WeatherForecast(std::string dataFileName, float temperature, float humidity, 
-    float airPressure, float windSpeed, int windDirection)
+WeatherForecast::WeatherForecast(std::string file, float temp, float hum, float pres, float speed, DIRECTION dir, PRECIPITATION prec, WEATHER_STATUS sta)
 {
-    
+    dataFileName      = file;
+    temperature       = temp;
+    humidity          = hum;
+    airPressure       = pres;
+    windSpeed         = speed;
+    windDirection     = dir;
+    precipitation     = prec;
+    status            = sta;
 }
 
 WeatherForecast::~WeatherForecast()
@@ -31,7 +44,7 @@ float WeatherForecast::getTemperature() const
 
 void WeatherForecast::setTemperature(float temp)
 {
-    
+    this->temperature = temp;
 }
 
 float WeatherForecast::getAirPressure() const
@@ -41,7 +54,7 @@ float WeatherForecast::getAirPressure() const
 
 void WeatherForecast::setAirPressure(float pressure)
 {
-    
+    this->airPressure = pressure;
 }
 
 float WeatherForecast::getWindSpeed() const
@@ -51,17 +64,17 @@ float WeatherForecast::getWindSpeed() const
 
 void WeatherForecast::setWindSpeed(float speed)
 {
-    
+    this->windSpeed = speed;
 }
 
-int WeatherForecast::getWindDirection() const
+DIRECTION WeatherForecast::getWindDirection() const
 {
     return this->windDirection;
 }
 
-void WeatherForecast::setWindDirection(int direction)
+void WeatherForecast::setWindDirection(DIRECTION direction)
 {
-    
+    this->windDirection = direction;
 }
 
 float WeatherForecast::getHumidity() const
@@ -71,12 +84,30 @@ float WeatherForecast::getHumidity() const
 
 void WeatherForecast::setHumidity(float humidity)
 {
-    
+    this->humidity = humidity;
+}
+
+PRECIPITATION WeatherForecast::getPrecipitation() const
+{
+    return this->precipitation;
+}
+
+void WeatherForecast::setPrecipitation(PRECIPITATION precipitation)
+{
+    this->precipitation = precipitation;
+}
+
+WEATHER_STATUS WeatherForecast::getWeatherStatus() const
+{
+    return this->status;
+}
+
+void WeatherForecast::setWeatherStatus(WEATHER_STATUS weatherStatus)
+{
+    this->status = weatherStatus;
 }
 
 void WeatherForecast::readWeatherData()
 {
     
 }
-
-
