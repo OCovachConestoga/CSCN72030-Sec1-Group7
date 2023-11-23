@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "FileManagement.h"
 
 // Constructors
 Camera::Camera(QWidget* parent)
@@ -61,8 +62,14 @@ void Camera::displayCameraFootage(Ui::JurassicSCADA* ui)
 
 void Camera::displayNightVision(Ui::JurassicSCADA* ui)
 {
-	if(this->getNightVision() == true)
-		ui->nightVisionLabel->setText("ON");
+	if (this->getNightVision() == false)
+	{
+		this->setNightVision(true);
+		this->displayCameraFootage(ui);
+	}
 	else
-		ui->nightVisionLabel->setText("OFF");
+	{
+		this->setNightVision(false);
+		this->displayCameraFootage(ui);
+	}
 }
