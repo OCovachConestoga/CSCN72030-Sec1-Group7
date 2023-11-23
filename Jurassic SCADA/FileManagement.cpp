@@ -53,6 +53,9 @@ void FileManagement::readFileData(Ui::JurassicSCADA* ui)
 	}
 	else
 	{
+		ui->popUpWindow->show();
+		ui->popUpWindow->update();
+		ui->popUpWindow->repaint();
 		// read data inside file
 		int i = 0;
 		while (fin.good())
@@ -64,6 +67,7 @@ void FileManagement::readFileData(Ui::JurassicSCADA* ui)
 			ui->popUpWindow->repaint();
 			Sleep(200);
 		}
+		ui->popUpWindow->hide();
 	}
 	
 	// close file to prevent corruption

@@ -86,11 +86,8 @@ void JurassicSCADA::on_nightVisionToggle_clicked()
 
 void JurassicSCADA::on_camerabtnClicked(Camera camera, FileManagement fileptr)
 {
-	ui.popUpWindow->show();
-	ui.popUpWindow->update();
-	ui.popUpWindow->repaint();
+	
 	fileptr.readFileData(&ui);
-	ui.popUpWindow->hide();
 	camera.displayCameraFootage(&ui);
 }
 
