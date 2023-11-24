@@ -4,6 +4,7 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 {
     ui.setupUi(this);
     ui.cameraScreen->hide();
+	ui.gateScreen->hide();
 	ui.popUpWindow->hide();
 
 
@@ -48,6 +49,20 @@ void JurassicSCADA::on_camerabtn_clicked()
 void JurassicSCADA::on_cameraBackbtn_clicked()
 {
 	ui.cameraScreen->hide();
+	ui.mainSCADA->show();
+}
+//*****************************************************************
+
+// *************** Main menu gate module buttons*****************
+void JurassicSCADA::on_gatesbtn_clicked()
+{
+	ui.mainSCADA->hide();
+	ui.gateScreen->show();
+}
+
+void JurassicSCADA::on_gatebackbtn_clicked()
+{
+	ui.gateScreen->hide();
 	ui.mainSCADA->show();
 }
 //*****************************************************************

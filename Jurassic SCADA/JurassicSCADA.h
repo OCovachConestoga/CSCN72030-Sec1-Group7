@@ -38,4 +38,8 @@ public slots:
 	void on_nightVisionbtnClicked(Camera*, FileManagement);
 	// ******************************************
 
+	// ********* Gate Button handlers *********
+	void on_gatesbtn_clicked();
+	void on_gatebackbtn_clicked();
+	// ******************************************
 };
