@@ -8,43 +8,47 @@
 #include "Gate.h"
 #include "FileManagement.h"
 
-Gate::Gate()
+//Contructors
+Gate::Gate(QWidget* parent)
 {
-    
+    this->gateID = new int;
+    this->gateIsClosed = new bool;
+    *this->gateID = 0;
+    *this->gateIsClosed = true;
+}
+Gate::Gate(int ID, bool isClosed)
+{
+    this->gateID = new int;
+    this->gateIsClosed = new bool;
+    *this->gateID = ID;
+    *this->gateIsClosed = isClosed;
 }
 
-Gate::Gate(std::string dataFileName, std::string gateStatus)
-{
-    
-}
-
-Gate::~Gate()
-{
-    
-}
-
+//Getter and Setters
 void Gate::openGate()
 {
-    
+    *gateIsClosed = false;
 }
-
 void Gate::closeGate()
 {
-    
+    *gateIsClosed = true;
 }
-
-std::string Gate::getGateStatus() const
+bool Gate::getGateStatus()
 {
-    return this->gateStatus;
+    return *gateIsClosed;
 }
-
-void Gate::setGateStatus(std::string status)
+void Gate::setGateStatus(bool status)
 {
-    
+    *gateIsClosed = status;
 }
-
 void Gate::readGateData()
 {
     
 }
 
+//Destructor
+Gate::~Gate()
+{
+    delete gateID;
+    delete gateIsClosed;
+}

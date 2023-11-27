@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="JurassicSCADA">
+    <file>LEDred.png</file>
+    <file>LEDgreen.png</file>
+    <file>Gate_Icon.png</file>
     <file>Camera.png</file>
     <file>Dinosaur 1 NV.jpg</file>
     <file>Dinosaur 2 NV.jpg</file>
