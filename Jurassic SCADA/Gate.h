@@ -8,6 +8,7 @@
 #pragma once
 #include "Ui_JurassicSCADA.h"
 #include <string>
+#define NUMBER_OF_GATES 8
 using namespace std;
 
 class Gate
@@ -19,6 +20,10 @@ public:
     //Contructors
     Gate(QWidget* parent = nullptr);
     Gate(int, bool);
+    Gate(const Gate& other);
+
+    // Copy assignment operator
+    Gate& operator=(const Gate& other);
 
     //Getters and Setters
     void openGate();
@@ -30,3 +35,5 @@ public:
     //Destructor
     ~Gate();
 };
+
+int getClosedGateCount(Gate[], int);

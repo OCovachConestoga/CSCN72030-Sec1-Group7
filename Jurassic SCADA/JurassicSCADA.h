@@ -51,5 +51,6 @@ public slots:
 	void on_gate6btn_clicked();
 	void on_gate7btn_clicked();
 	void on_gate8btn_clicked();
+	void changeGateCountDisplay(Gate[], int);
 	// ******************************************
 };

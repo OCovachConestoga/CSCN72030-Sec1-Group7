@@ -21,9 +21,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>611</y>
-      <width>20</width>
-      <height>20</height>
+      <y>0</y>
+      <width>851</width>
+      <height>631</height>
      </rect>
     </property>
     <widget class="QFrame" name="CameraBox">
@@ -265,9 +265,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>610</y>
-      <width>20</width>
-      <height>21</height>
+      <y>0</y>
+      <width>851</width>
+      <height>631</height>
      </rect>
     </property>
     <widget class="QPushButton" name="nightVisionToggle">
@@ -704,7 +704,8 @@
        <enum>QFrame::Raised</enum>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/JurassicSCADA/LEDgreen.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/JurassicSCADA/LEDgreen.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -1020,6 +1021,27 @@
      </property>
      <property name="text">
       <string>&lt;Main</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="GateOverallData">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>450</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Gates Closed: 8/8</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
