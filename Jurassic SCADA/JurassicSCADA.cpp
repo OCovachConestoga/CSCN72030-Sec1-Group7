@@ -104,7 +104,7 @@ void JurassicSCADA::on_gate1btn_clicked()
 		ui.Gate1Data->setText("Gate 1 Open");
 		ui.Gate1LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 	}
-
+	changeGateCountDisplay(gateArray, NUMBER_OF_GATES);
 	QString message;
 	message = QString::fromUtf8("Closed Gates: %1\n").arg(getClosedGateCount(gateArray, NUMBER_OF_GATES));
 	QMessageBox::information(nullptr, "Gate Status", message);
@@ -122,6 +122,7 @@ void JurassicSCADA::on_gate2btn_clicked()
 		ui.Gate2Data->setText("Gate 2 Open");
 		ui.Gate2LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 	}
+	changeGateCountDisplay(gateArray, NUMBER_OF_GATES);
 }
 void JurassicSCADA::on_gate3btn_clicked()
 {
@@ -136,6 +137,7 @@ void JurassicSCADA::on_gate3btn_clicked()
 		ui.Gate3Data->setText("Gate 3 Open");
 		ui.Gate3LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 	}
+	changeGateCountDisplay(gateArray, NUMBER_OF_GATES);
 }
 void JurassicSCADA::on_gate4btn_clicked()
 {
@@ -150,6 +152,7 @@ void JurassicSCADA::on_gate4btn_clicked()
 		ui.Gate4Data->setText("Gate 4 Open");
 		ui.Gate4LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 	}
+	changeGateCountDisplay(gateArray, NUMBER_OF_GATES);
 }
 void JurassicSCADA::on_gate5btn_clicked()
 {
@@ -164,6 +167,7 @@ void JurassicSCADA::on_gate5btn_clicked()
 		ui.Gate5Data->setText("Gate 5 Open");
 		ui.Gate5LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 	}
+	changeGateCountDisplay(gateArray, NUMBER_OF_GATES);
 }
 void JurassicSCADA::on_gate6btn_clicked()
 {
@@ -178,6 +182,7 @@ void JurassicSCADA::on_gate6btn_clicked()
 		ui.Gate6Data->setText("Gate 6 Open");
 		ui.Gate6LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 	}
+	changeGateCountDisplay(gateArray, NUMBER_OF_GATES);
 }
 void JurassicSCADA::on_gate7btn_clicked()
 {
@@ -192,6 +197,7 @@ void JurassicSCADA::on_gate7btn_clicked()
 		ui.Gate7Data->setText("Gate 7 Open");
 		ui.Gate7LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 	}
+	changeGateCountDisplay(gateArray, NUMBER_OF_GATES);
 }
 void JurassicSCADA::on_gate8btn_clicked()
 {
@@ -206,12 +212,30 @@ void JurassicSCADA::on_gate8btn_clicked()
 		ui.Gate8Data->setText("Gate 8 Open");
 		ui.Gate8LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 	}
+	changeGateCountDisplay(gateArray, NUMBER_OF_GATES);
 }
 void JurassicSCADA::changeGateCountDisplay(Gate g[], int arraySize)
 {
-	if (getClosedGateCount(gateArray, NUMBER_OF_GATES) == 6)
+	int closedCount = getClosedGateCount(g, arraySize);
+	ui.GateMenuData1->setText(QString("Gates Closed: %1/8").arg(closedCount));
+	ui.GateData1->setText(QString("Gates Closed: %1/8").arg(closedCount));
+	if (closedCount >=7)
 	{
-		ui.GateOverallData->setText("Gates Closed: 6/8");
+		ui.GateIcon->setText("<html><head/><body><p><img src =\":/JurassicSCADA/Gate_Icon.png\"/></p></body></html>");
+		ui.GateMenuData2->setText("Threat Level: Low");
+		ui.GateData2->setText("Threat Level: Low");
+	}
+	else if (closedCount >= 5)
+	{
+		ui.GateIcon->setText("<html><head/><body><p><img src =\":/JurassicSCADA/Gate_Icon.png\"/></p></body></html>");
+		ui.GateMenuData2->setText("Threat Level: Medium"); 
+		ui.GateData2->setText("Threat Level: Medium");
+	}
+	else
+	{
+		ui.GateIcon->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.GateMenuData2->setText("Threat Level: High");
+		ui.GateData2->setText("Threat Level: High");
 	}
 }
 
