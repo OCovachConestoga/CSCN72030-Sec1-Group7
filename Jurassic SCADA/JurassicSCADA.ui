@@ -21,9 +21,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>851</width>
-      <height>631</height>
+      <y>611</y>
+      <width>20</width>
+      <height>20</height>
      </rect>
     </property>
     <widget class="QFrame" name="CameraBox">
@@ -265,9 +265,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>851</width>
-      <height>631</height>
+      <y>610</y>
+      <width>20</width>
+      <height>21</height>
      </rect>
     </property>
     <widget class="QPushButton" name="nightVisionToggle">
@@ -742,7 +742,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="gate1btn_2">
+     <widget class="QPushButton" name="gate5btn">
       <property name="geometry">
        <rect>
         <x>40</x>
