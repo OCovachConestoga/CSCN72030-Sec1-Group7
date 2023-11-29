@@ -10,6 +10,7 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 	//********************************* Initialization of camera objects *******************************************
 	
 	// for testing purposes
+	Camera c;
 	Camera c1(2, true, "Cam 1 footage");
 	c1.setCameraID(1);
 	c1.setNightVision(false);
@@ -38,10 +39,12 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 
 	//********************************* Initialization of File objects *******************************************
 	// file pointer for camera text files
+	
 	FileManagement CameraSwitch("NightVisionToggle.txt");
 	FileManagement NightVisionToggle("NightVisionToggle.txt");
 
 	// for testing purposes
+	FileManagement test;
 	CameraSwitch.setFileName("CameraSwitch.txt");
 	std::string expectedFileName = CameraSwitch.getFileName();
 
