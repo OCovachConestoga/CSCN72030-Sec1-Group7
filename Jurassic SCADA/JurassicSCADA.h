@@ -67,6 +67,6 @@ public slots:
 	void on_fence6btn_clicked();
 	void on_fence7btn_clicked();
 	void on_fence8btn_clicked();
-	//void changeFenceCountDisplay(Gate[], int);
+	void changeFenceCountDisplay(ElectricFence[], int);
 	// ******************************************
 };

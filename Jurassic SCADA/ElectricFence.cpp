@@ -83,3 +83,13 @@ ElectricFence::~ElectricFence()
     delete fenceVoltage;
 }
 
+int getActiveFenceCount(ElectricFence g[], int arraySize)
+{
+    int activeFenceCount = 0;
+
+    for (int i = 0; i < arraySize; i++)
+        if (g[i].getElectricFenceStatus() == true)
+            activeFenceCount++;
+    return activeFenceCount;
+}
+

@@ -298,7 +298,7 @@ void JurassicSCADA::on_fence1btn_clicked()
 		ui.Fence1LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 		ui.Fence1Data2->setText("Voltage: 0.0V");
 	}
-	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+	changeFenceCountDisplay(fenceArray, NUMBER_OF_FENCES);
 }
 void JurassicSCADA::on_fence2btn_clicked()
 {
@@ -318,7 +318,7 @@ void JurassicSCADA::on_fence2btn_clicked()
 		ui.Fence2LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 		ui.Fence2Data2->setText("Voltage: 0.0V");
 	}
-	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+	changeFenceCountDisplay(fenceArray, NUMBER_OF_FENCES);
 }
 void JurassicSCADA::on_fence3btn_clicked()
 {
@@ -338,7 +338,7 @@ void JurassicSCADA::on_fence3btn_clicked()
 		ui.Fence3LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 		ui.Fence3Data2->setText("Voltage: 0.0V");
 	}
-	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+	changeFenceCountDisplay(fenceArray, NUMBER_OF_FENCES);
 }
 void JurassicSCADA::on_fence4btn_clicked()
 {
@@ -358,7 +358,7 @@ void JurassicSCADA::on_fence4btn_clicked()
 		ui.Fence4LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 		ui.Fence4Data2->setText("Voltage: 0.0V");
 	}
-	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+	changeFenceCountDisplay(fenceArray, NUMBER_OF_FENCES);
 }
 void JurassicSCADA::on_fence5btn_clicked()
 {
@@ -378,7 +378,7 @@ void JurassicSCADA::on_fence5btn_clicked()
 		ui.Fence5LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 		ui.Fence5Data2->setText("Voltage: 0.0V");
 	}
-	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+	changeFenceCountDisplay(fenceArray, NUMBER_OF_FENCES);
 }
 void JurassicSCADA::on_fence6btn_clicked()
 {
@@ -398,7 +398,7 @@ void JurassicSCADA::on_fence6btn_clicked()
 		ui.Fence6LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 		ui.Fence6Data2->setText("Voltage: 0.0V");
 	}
-	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+	changeFenceCountDisplay(fenceArray, NUMBER_OF_FENCES);
 }
 void JurassicSCADA::on_fence7btn_clicked()
 {
@@ -418,7 +418,7 @@ void JurassicSCADA::on_fence7btn_clicked()
 		ui.Fence7LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 		ui.Fence7Data2->setText("Voltage: 0.0V");
 	}
-	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+	changeFenceCountDisplay(fenceArray, NUMBER_OF_FENCES);
 }
 void JurassicSCADA::on_fence8btn_clicked()
 {
@@ -438,7 +438,31 @@ void JurassicSCADA::on_fence8btn_clicked()
 		ui.Fence8LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 		ui.Fence8Data2->setText("Voltage: 0.0V");
 	}
-	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+	changeFenceCountDisplay(fenceArray, NUMBER_OF_FENCES);
+}
+void JurassicSCADA::changeFenceCountDisplay(ElectricFence g[], int arraySize)
+{
+	int activeCount = getActiveFenceCount(g, arraySize);
+	ui.FenceMenuData1->setText(QString("Fences Active: %1/8").arg(activeCount));
+	ui.FenceData1->setText(QString("Fences Active: %1/8").arg(activeCount));
+	if (activeCount >= 7)
+	{
+		ui.FenceIcon->setText("<html><head/><body><p><img src =\":/JurassicSCADA/Fence Icon.png\"/></p></body></html>");
+		ui.FenceMenuData2->setText("Threat Level: Low");
+		ui.FenceData2->setText("Threat Level: Low");
+	}
+	else if (activeCount >= 5)
+	{
+		ui.FenceIcon->setText("<html><head/><body><p><img src =\":/JurassicSCADA/Fence Icon.png\"/></p></body></html>");
+		ui.FenceMenuData2->setText("Threat Level: Medium");
+		ui.FenceData2->setText("Threat Level: Medium");
+	}
+	else
+	{
+		ui.FenceIcon->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.FenceMenuData2->setText("Threat Level: High");
+		ui.FenceData2->setText("Threat Level: High");
+	}
 }
 
 // ********* Camera button handlers ***************
