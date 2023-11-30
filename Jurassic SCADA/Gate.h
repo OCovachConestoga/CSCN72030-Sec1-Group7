@@ -30,7 +30,6 @@ public:
     void closeGate();
     bool getGateStatus();
     void setGateStatus(bool status);
-    void readGateData();
 
     //Destructor
     ~Gate();

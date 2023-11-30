@@ -6,6 +6,7 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
     ui.setupUi(this);
     ui.cameraScreen->hide();
 	ui.gateScreen->hide();
+	ui.fenceScreen->hide();
 	ui.popUpWindow->hide();
 
 
@@ -43,6 +44,34 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 	this->gateArray[5] = g6;
 	this->gateArray[6] = g7;
 	this->gateArray[7] = g8;
+	// *************************************************************************************************************
+
+	//********************************* Initialization of Fence objects *******************************************
+	ElectricFence f1(1, true, 500.0);
+	ElectricFence f2(2, true, 500.0);
+	ElectricFence f3(3, true, 500.0);
+	ElectricFence f4(4, true, 500.0);
+	ElectricFence f5(5, true, 500.0);
+	ElectricFence f6(6, true, 500.0);
+	ElectricFence f7(7, true, 500.0);
+	ElectricFence f8(8, true, 500.0);
+	this->fenceArray = new ElectricFence[NUMBER_OF_GATES];
+	this->fenceArray[0] = f1;
+	this->fenceArray[1] = f2;
+	this->fenceArray[2] = f3;
+	this->fenceArray[3] = f4;
+	this->fenceArray[4] = f5;
+	this->fenceArray[5] = f6;
+	this->fenceArray[6] = f7;
+	this->fenceArray[7] = f8;
+	ui.Fence1Data2->setText(QString("Voltage: %1V").arg(fenceArray[0].getElectricFenceVoltage()));
+	ui.Fence2Data2->setText(QString("Voltage: %1V").arg(fenceArray[1].getElectricFenceVoltage()));
+	ui.Fence3Data2->setText(QString("Voltage: %1V").arg(fenceArray[2].getElectricFenceVoltage()));
+	ui.Fence4Data2->setText(QString("Voltage: %1V").arg(fenceArray[3].getElectricFenceVoltage()));
+	ui.Fence5Data2->setText(QString("Voltage: %1V").arg(fenceArray[4].getElectricFenceVoltage()));
+	ui.Fence6Data2->setText(QString("Voltage: %1V").arg(fenceArray[5].getElectricFenceVoltage()));
+	ui.Fence7Data2->setText(QString("Voltage: %1V").arg(fenceArray[6].getElectricFenceVoltage()));
+	ui.Fence8Data2->setText(QString("Voltage: %1V").arg(fenceArray[7].getElectricFenceVoltage()));
 	// *************************************************************************************************************
 
 	//********************************* Initialization of File objects *******************************************
@@ -87,6 +116,20 @@ void JurassicSCADA::on_gatebackbtn_clicked()
 }
 //*****************************************************************
 
+// *************** Main menu fence module buttons*****************
+void JurassicSCADA::on_fencebtn_clicked()
+{
+	ui.mainSCADA->hide();
+	ui.fenceScreen->show();
+}
+
+void JurassicSCADA::on_fencebackbtn_clicked()
+{
+	ui.fenceScreen->hide();
+	ui.mainSCADA->show();
+}
+//*****************************************************************
+
 // ********** Gate button handlers ****************
 void JurassicSCADA::on_gate1btn_clicked()
 {
@@ -105,9 +148,6 @@ void JurassicSCADA::on_gate1btn_clicked()
 		ui.Gate1LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
 	}
 	changeGateCountDisplay(gateArray, NUMBER_OF_GATES);
-	QString message;
-	message = QString::fromUtf8("Closed Gates: %1\n").arg(getClosedGateCount(gateArray, NUMBER_OF_GATES));
-	QMessageBox::information(nullptr, "Gate Status", message);
 }
 void JurassicSCADA::on_gate2btn_clicked()
 {
@@ -237,6 +277,168 @@ void JurassicSCADA::changeGateCountDisplay(Gate g[], int arraySize)
 		ui.GateMenuData2->setText("Threat Level: High");
 		ui.GateData2->setText("Threat Level: High");
 	}
+}
+
+// ********** Fence button handlers ****************
+void JurassicSCADA::on_fence1btn_clicked()
+{
+	//Switch the fence status
+	fenceArray[0].setElectricFenceStatus(!(fenceArray[0].getElectricFenceStatus()));
+
+	//Update the UI accordingly
+	if (fenceArray[0].getElectricFenceStatus() == true)
+	{
+		ui.Fence1Data->setText("Fence 1 Active");
+		ui.Fence1LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDgreen.png\"/></p></body></html>");
+		ui.Fence1Data2->setText(QString("Voltage: %1V").arg(fenceArray[0].getElectricFenceVoltage()));
+	}
+	else
+	{
+		ui.Fence1Data->setText("Fence 1 Inactive");
+		ui.Fence1LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.Fence1Data2->setText("Voltage: 0.0V");
+	}
+	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+}
+void JurassicSCADA::on_fence2btn_clicked()
+{
+	//Switch the fence status
+	fenceArray[1].setElectricFenceStatus(!(fenceArray[1].getElectricFenceStatus()));
+
+	//Update the UI accordingly
+	if (fenceArray[1].getElectricFenceStatus() == true)
+	{
+		ui.Fence2Data->setText("Fence 2 Active");
+		ui.Fence2LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDgreen.png\"/></p></body></html>");
+		ui.Fence2Data2->setText(QString("Voltage: %1V").arg(fenceArray[1].getElectricFenceVoltage()));
+	}
+	else
+	{
+		ui.Fence2Data->setText("Fence 2 Inactive");
+		ui.Fence2LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.Fence2Data2->setText("Voltage: 0.0V");
+	}
+	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+}
+void JurassicSCADA::on_fence3btn_clicked()
+{
+	//Switch the fence status
+	fenceArray[2].setElectricFenceStatus(!(fenceArray[2].getElectricFenceStatus()));
+
+	//Update the UI accordingly
+	if (fenceArray[2].getElectricFenceStatus() == true)
+	{
+		ui.Fence3Data->setText("Fence 3 Active");
+		ui.Fence3LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDgreen.png\"/></p></body></html>");
+		ui.Fence3Data2->setText(QString("Voltage: %1V").arg(fenceArray[2].getElectricFenceVoltage()));
+	}
+	else
+	{
+		ui.Fence3Data->setText("Fence 3 Inactive");
+		ui.Fence3LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.Fence3Data2->setText("Voltage: 0.0V");
+	}
+	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+}
+void JurassicSCADA::on_fence4btn_clicked()
+{
+	//Switch the fence status
+	fenceArray[3].setElectricFenceStatus(!(fenceArray[3].getElectricFenceStatus()));
+
+	//Update the UI accordingly
+	if (fenceArray[3].getElectricFenceStatus() == true)
+	{
+		ui.Fence4Data->setText("Fence 4 Active");
+		ui.Fence4LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDgreen.png\"/></p></body></html>");
+		ui.Fence4Data2->setText(QString("Voltage: %1V").arg(fenceArray[3].getElectricFenceVoltage()));
+	}
+	else
+	{
+		ui.Fence4Data->setText("Fence 4 Inactive");
+		ui.Fence4LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.Fence4Data2->setText("Voltage: 0.0V");
+	}
+	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+}
+void JurassicSCADA::on_fence5btn_clicked()
+{
+	//Switch the fence status
+	fenceArray[4].setElectricFenceStatus(!(fenceArray[4].getElectricFenceStatus()));
+
+	//Update the UI accordingly
+	if (fenceArray[4].getElectricFenceStatus() == true)
+	{
+		ui.Fence5Data->setText("Fence 5 Active");
+		ui.Fence5LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDgreen.png\"/></p></body></html>");
+		ui.Fence5Data2->setText(QString("Voltage: %1V").arg(fenceArray[4].getElectricFenceVoltage()));
+	}
+	else
+	{
+		ui.Fence5Data->setText("Fence 5 Inactive");
+		ui.Fence5LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.Fence5Data2->setText("Voltage: 0.0V");
+	}
+	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+}
+void JurassicSCADA::on_fence6btn_clicked()
+{
+	//Switch the fence status
+	fenceArray[5].setElectricFenceStatus(!(fenceArray[5].getElectricFenceStatus()));
+
+	//Update the UI accordingly
+	if (fenceArray[5].getElectricFenceStatus() == true)
+	{
+		ui.Fence6Data->setText("Fence 6 Active");
+		ui.Fence6LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDgreen.png\"/></p></body></html>");
+		ui.Fence6Data2->setText(QString("Voltage: %1V").arg(fenceArray[5].getElectricFenceVoltage()));
+	}
+	else
+	{
+		ui.Fence6Data->setText("Fence 6 Inactive");
+		ui.Fence6LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.Fence6Data2->setText("Voltage: 0.0V");
+	}
+	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+}
+void JurassicSCADA::on_fence7btn_clicked()
+{
+	//Switch the fence status
+	fenceArray[6].setElectricFenceStatus(!(fenceArray[6].getElectricFenceStatus()));
+
+	//Update the UI accordingly
+	if (fenceArray[6].getElectricFenceStatus() == true)
+	{
+		ui.Fence7Data->setText("Fence 7 Active");
+		ui.Fence7LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDgreen.png\"/></p></body></html>");
+		ui.Fence7Data2->setText(QString("Voltage: %1V").arg(fenceArray[6].getElectricFenceVoltage()));
+	}
+	else
+	{
+		ui.Fence7Data->setText("Fence 7 Inactive");
+		ui.Fence7LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.Fence7Data2->setText("Voltage: 0.0V");
+	}
+	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
+}
+void JurassicSCADA::on_fence8btn_clicked()
+{
+	//Switch the fence status
+	fenceArray[7].setElectricFenceStatus(!(fenceArray[7].getElectricFenceStatus()));
+
+	//Update the UI accordingly
+	if (fenceArray[7].getElectricFenceStatus() == true)
+	{
+		ui.Fence8Data->setText("Fence 8 Active");
+		ui.Fence8LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDgreen.png\"/></p></body></html>");
+		ui.Fence8Data2->setText(QString("Voltage: %1V").arg(fenceArray[7].getElectricFenceVoltage()));
+	}
+	else
+	{
+		ui.Fence8Data->setText("Fence 8 Inactive");
+		ui.Fence8LED->setText("<html><head/><body><p><img src =\":/JurassicSCADA/LEDred.png\"/></p></body></html>");
+		ui.Fence8Data2->setText("Voltage: 0.0V");
+	}
+	//changeFenceCountDisplay(gateArray, NUMBER_OF_GATES);
 }
 
 // ********* Camera button handlers ***************

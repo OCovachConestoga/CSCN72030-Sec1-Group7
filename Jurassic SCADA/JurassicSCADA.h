@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include "Camera.h"
 #include "Gate.h"
+#include "ElectricFence.h"
 #include "FileManagement.h"
 
 #define MAXCAMERAS	6
@@ -22,6 +23,7 @@ private:
     Ui::JurassicSCADA ui;
 	Camera* cameraArray;
 	Gate* gateArray;
+	ElectricFence* fenceArray;
 	FileManagement* FileArray;
 
 public slots:
@@ -52,5 +54,19 @@ public slots:
 	void on_gate7btn_clicked();
 	void on_gate8btn_clicked();
 	void changeGateCountDisplay(Gate[], int);
+	// ******************************************
+
+		// ********* Fence Button handlers *********
+	void on_fencebtn_clicked();
+	void on_fencebackbtn_clicked();
+	void on_fence1btn_clicked();
+	void on_fence2btn_clicked();
+	void on_fence3btn_clicked();
+	void on_fence4btn_clicked();
+	void on_fence5btn_clicked();
+	void on_fence6btn_clicked();
+	void on_fence7btn_clicked();
+	void on_fence8btn_clicked();
+	//void changeFenceCountDisplay(Gate[], int);
 	// ******************************************
 };

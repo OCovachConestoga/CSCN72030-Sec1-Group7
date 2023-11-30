@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="JurassicSCADA">
     <file>LEDred.png</file>
+    <file>Fence Icon.png</file>
     <file>LEDgreen.png</file>
     <file>Gate_Icon.png</file>
     <file>Camera.png</file>

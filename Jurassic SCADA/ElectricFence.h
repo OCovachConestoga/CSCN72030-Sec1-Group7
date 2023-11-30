@@ -6,21 +6,33 @@
 // ElectricFence class declaration
 
 #pragma once
+#include "Ui_JurassicSCADA.h"
 #include <string>
+#define NUMBER_OF_FENCES 8
+using namespace std;
 
-class ElectricFence {
+class ElectricFence
+{
+    int* fenceID;
+    bool* fenceIsActive;
+    float* fenceVoltage;
 public:
-    ElectricFence();
-    ElectricFence(std::string dataFileName, float currentVoltage);
+    //Constructors
+    ElectricFence(QWidget* parent = nullptr);
+    ElectricFence(int, bool, float);
+    ElectricFence(const ElectricFence& other);
+
+    // Copy assignment operator
+    ElectricFence& operator=(const ElectricFence& other);
+
+    void activateElectricFence();
+    void deactivateElectricFence();
+    float getElectricFenceVoltage();
+    void setElectricFenceVoltage(float voltage);
+    bool getElectricFenceStatus();
+    void setElectricFenceStatus(bool status);
+
+    //Destructor
     ~ElectricFence();
-
-    void activateFence();
-    void deactivateFence();
-    float getVoltage() const;
-    void setVoltage(float voltage);
-    void readElectricFenceData();
-
-private:
-    std::string dataFileName;
-    float currentVoltage;
 };
+int getActiveFenceCount(ElectricFence[], int);

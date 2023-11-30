@@ -59,10 +59,6 @@ void Gate::setGateStatus(bool status)
 {
     *gateIsClosed = status;
 }
-void Gate::readGateData()
-{
-    
-}
 
 //Destructor
 Gate::~Gate()
@@ -72,7 +68,6 @@ Gate::~Gate()
 }
 
 //Other gate functions
-
 int getClosedGateCount(Gate g[], int arraySize)
 {
     int closedGateCount = 0;
