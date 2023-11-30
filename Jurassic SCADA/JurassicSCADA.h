@@ -67,6 +67,22 @@ public slots:
 	void on_fence6btn_clicked();
 	void on_fence7btn_clicked();
 	void on_fence8btn_clicked();
+	void on_fence1incbtn_clicked();
+	void on_fence1decbtn_clicked();
+	void on_fence2incbtn_clicked();
+	void on_fence2decbtn_clicked();
+	void on_fence3incbtn_clicked();
+	void on_fence3decbtn_clicked();
+	void on_fence4incbtn_clicked();
+	void on_fence4decbtn_clicked();
+	void on_fence5incbtn_clicked();
+	void on_fence5decbtn_clicked();
+	void on_fence6incbtn_clicked();
+	void on_fence6decbtn_clicked();
+	void on_fence7incbtn_clicked();
+	void on_fence7decbtn_clicked();
+	void on_fence8incbtn_clicked();
+	void on_fence8decbtn_clicked();
 	void changeFenceCountDisplay(ElectricFence[], int);
 	// ******************************************
 };
