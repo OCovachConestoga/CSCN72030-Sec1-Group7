@@ -10,7 +10,20 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 
 
 	//********************************* Initialization of camera objects *******************************************
-	Camera c1(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1.jpg\"/></p></body></html>");
+	
+	// for testing purposes
+	Camera c;
+	Camera c1(2, true, "Cam 1 footage");
+	c1.setCameraID(1);
+	c1.setNightVision(false);
+	c1.setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1.jpg\"/></p></body></html>");
+	
+	int expectedCamID = c1.getCameraID();
+	bool expectedNightVision = c1.getNightVision();
+	QString expectedFootage = c1.getFootage();
+
+
+	
 	Camera c2(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 2.jpg\"/></p></body></html>");
 	Camera c3(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3.jpg\"/></p></body></html>");
 	Camera c4(1, false, "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4.jpg\"/></p></body></html>");
@@ -75,12 +88,21 @@ JurassicSCADA::JurassicSCADA(QWidget *parent) : QMainWindow(parent)
 
 	//********************************* Initialization of File objects *******************************************
 	// file pointer for camera text files
-	FileManagement CameraSwitch("CameraSwitch.txt");
+	
+	FileManagement CameraSwitch("NightVisionToggle.txt");
 	FileManagement NightVisionToggle("NightVisionToggle.txt");
+
 	FileManagement GateClosing("GateClosing.txt");
 	FileManagement GateOpening("GateOpening.txt");
 	FileManagement FenceActivating("FenceActivating.txt");
 	FileManagement FenceDeactivating("FenceDeactivating.txt");
+
+	// for testing purposes
+	FileManagement test;
+	CameraSwitch.setFileName("CameraSwitch.txt");
+	std::string expectedFileName = CameraSwitch.getFileName();
+
+
 	this->FileArray = new FileManagement[10];
 	this->FileArray[0] = CameraSwitch;
 	this->FileArray[1] = NightVisionToggle;
@@ -677,8 +699,7 @@ void JurassicSCADA::on_camerabtnClicked(Camera camera, FileManagement fileptr)
 void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera, FileManagement fileptr)
 {
 	fileptr.readFileData(&ui);
-	if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1.jpg\"/></p></body></html>" ||
-		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1 NV.jpg\"/></p></body></html>")
+	if (ui.cameraLabel->text() == camera[0].getFootage())
 	{
 		if (camera[0].getNightVision() == false)
 			camera[0].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 1 NV.jpg\"/></p></body></html>");
@@ -690,8 +711,7 @@ void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera, FileManagement file
 
 
 
-	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 2.jpg\"/></p></body></html>" ||
-		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 2 NV.jpg\"/></p></body></html>")
+	else if (ui.cameraLabel->text() == camera[1].getFootage())
 	{
 		if (camera[1].getNightVision() == false)
 			camera[1].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 2 NV.jpg\"/></p></body></html>");
@@ -703,8 +723,7 @@ void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera, FileManagement file
 
 
 
-	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3.jpg\"/></p></body></html>" ||
-		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3 NV.jpg\"/></p></body></html>")
+	else if (ui.cameraLabel->text() == camera[2].getFootage())
 	{
 		if (camera[2].getNightVision() == false)
 			camera[2].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 3 NV.jpg\"/></p></body></html>");
@@ -716,8 +735,7 @@ void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera, FileManagement file
 
 
 
-	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4.jpg\"/></p></body></html>" ||
-		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4 NV.jpg\"/></p></body></html>")
+	else if (ui.cameraLabel->text() == camera[3].getFootage())
 	{
 		if (camera[3].getNightVision() == false)
 			camera[3].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 4 NV.jpg\"/></p></body></html>");
@@ -729,8 +747,7 @@ void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera, FileManagement file
 
 
 
-	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 5.jpg\"/></p></body></html>" ||
-		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 5 NV.jpg\"/></p></body></html>")
+	else if (ui.cameraLabel->text() == camera[4].getFootage())
 	{
 		if (camera[4].getNightVision() == false)
 			camera[4].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 5 NV.jpg\"/></p></body></html>");
@@ -742,8 +759,7 @@ void JurassicSCADA::on_nightVisionbtnClicked(Camera* camera, FileManagement file
 
 
 
-	else if (ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6.png\"/></p></body></html>" ||
-		ui.cameraLabel->text() == "<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6 NV.jpg\"/></p></body></html>")
+	else if (ui.cameraLabel->text() == camera[5].getFootage())
 	{	
 		if (camera[5].getNightVision() == false)
 			camera[5].setFootage("<html><head/><body><p><img src=\":/JurassicSCADA/Dinosaur 6 NV.jpg\"/></p></body></html>");
