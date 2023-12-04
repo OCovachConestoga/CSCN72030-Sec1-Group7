@@ -8,38 +8,110 @@
 #include "Car.h"
 #include "FileManagement.h"
 
-Car::Car(QWidget* parent)
+Car::Car()
 {
-    this->fuelReserve = new float;
-    *this->fuelReserve = 0;
+
 }
 
-Car::Car(float fuelReserve)
+Car::Car(std::string dataFileName, bool doorsLocked, bool headlights, 
+    float speed, float positionOnTrack, float tirePressure)
 {
-    this->fuelReserve = new float;
-    *this->fuelReserve = fuelReserve;
+
 }
 
 Car::~Car()
 {
+
 }
 
-float Car::getFuelReserve() const
+bool Car::getDoorsLocked() const
 {
-    return *this->fuelReserve;
+    return this->doorsLocked;
 }
 
-void Car::setFuelReserve(float fuelReserve)
+void Car::setDoorsLocked(bool locked)
 {
-    *this->fuelReserve = fuelReserve;
+
 }
 
-void Car::decreaseFuelReserve(float amount) {
-    *fuelReserve -= amount;
+bool Car::getHeadlights() const
+{
+    return this->headlights;
+}
 
-    if (*fuelReserve < 0) {
-        setFuelReserve(100);
-    }
+void Car::setHeadlights(bool on)
+{
+
+}
+
+float Car::getSpeed() const
+{
+    return this->speed;
+}
+
+void Car::setSpeed(float speed)
+{
+
+}
+
+float Car::getPositionOnTrack() const
+{
+    return this->positionOnTrack;
+}
+
+void Car::setPositionOnTrack(float position)
+{
+
+}
+
+float Car::getTirePressure() const
+{
+    return this->tirePressure;
+}
+
+void Car::setTirePressure(float pressure)
+{
+
+}
+
+
+void Car::accelerate()
+{
+
+}
+
+void Car::decelerate()
+{
+
+}
+
+void Car::stop()
+{
+
+}
+
+void Car::unlockDoors()
+{
+
+}
+
+void Car::lockDoors()
+{
+
+}
+
+void Car::turnHeadlightsOn()
+{
+
+}
+
+void Car::turnHeadlightsOff()
+{
+
+}
+
+void Car::readCarData()
+{
 
 }
 

@@ -8,18 +8,14 @@
 #include "Monorail.h"
 #include "FileManagement.h"
 
-Monorail::Monorail(QWidget* parent)
+Monorail::Monorail()
 {
-    this->powerStatus = new bool;
-    *this->powerStatus = true;
-    this->cars = std::vector<Car>();
+    
 }
 
-Monorail::Monorail(bool powerStatus)
+Monorail::Monorail(std::string dataFileName, bool poweredStatus)
 {
-    this->powerStatus = new bool;
-    *this->powerStatus = powerStatus;
-    this->cars = std::vector<Car>();
+    
 }
 
 Monorail::~Monorail()
@@ -27,22 +23,18 @@ Monorail::~Monorail()
     
 }
 
-bool Monorail::getPowerStatus() const
+bool Monorail::getPoweredStatus() const
 {
-    return *powerStatus;
+    return this->poweredStatus;
 }
 
-void Monorail::setPowerStatus(bool status)
+void Monorail::setPoweredStatus(bool status)
 {
-    *this->powerStatus = status;
+    
 }
 
-void Monorail::addCar(const Car& car)
+void Monorail::readMonorailData()
 {
-    cars.push_back(car);
+    
 }
 
-const std::vector<Car>& Monorail::getCars() const
-{
-    return cars;
-}

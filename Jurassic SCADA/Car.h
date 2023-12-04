@@ -6,19 +6,39 @@
 // Car class declaration
 
 #pragma once
-#include "Ui_JurassicSCADA.h"
 #include <string>
 
 class Car {
 public:
-    Car(QWidget* parent = nullptr);
-    Car(float fuelReserve);
+    Car();
+    Car(std::string dataFileName, bool doorsLocked, bool headlights, float speed, float positionOnTrack, float tirePressure);
     ~Car();
 
-    float getFuelReserve() const;
-    void setFuelReserve (float fuelReserve);
-    void decreaseFuelReserve(float amount);
+    bool getDoorsLocked() const;
+    void setDoorsLocked(bool locked);
+    bool getHeadlights() const;
+    void setHeadlights(bool on);
+    float getSpeed() const;
+    void setSpeed(float speed);
+    float getPositionOnTrack() const;
+    void setPositionOnTrack(float position);
+    float getTirePressure() const;
+    void setTirePressure(float pressure);
+
+    void accelerate();
+    void decelerate();
+    void stop();
+    void unlockDoors();
+    void lockDoors();
+    void turnHeadlightsOn();
+    void turnHeadlightsOff();
+    void readCarData();
 
 private:
-    float* fuelReserve;
+    std::string dataFileName;
+    bool doorsLocked;
+    bool headlights;
+    float speed;
+    float positionOnTrack;
+    float tirePressure;
 };
