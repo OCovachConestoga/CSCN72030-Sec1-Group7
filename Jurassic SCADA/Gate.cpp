@@ -8,43 +8,73 @@
 #include "Gate.h"
 #include "FileManagement.h"
 
-Gate::Gate()
+//Contructors
+Gate::Gate(QWidget* parent)
 {
-    
+    this->gateID = new int;
+    this->gateIsClosed = new bool;
+    *this->gateID = 0;
+    *this->gateIsClosed = true;
+}
+Gate::Gate(int ID, bool isClosed)
+{
+    this->gateID = new int;
+    this->gateIsClosed = new bool;
+    *this->gateID = ID;
+    *this->gateIsClosed = isClosed;
+}
+Gate::Gate(const Gate& other)
+{
+    this->gateID = new int;
+    this->gateIsClosed = new bool;
+    *this->gateID = *other.gateID;
+    *this->gateIsClosed = *other.gateIsClosed;
 }
 
-Gate::Gate(std::string dataFileName, std::string gateStatus)
+// Implement the copy assignment operator
+Gate& Gate::operator=(const Gate& other)
 {
-    
+    if (this != &other) // Avoid self-assignment
+    {
+        *this->gateID = *other.gateID;
+        *this->gateIsClosed = *other.gateIsClosed;
+    }
+    return *this;
 }
 
-Gate::~Gate()
-{
-    
-}
-
+//Getter and Setters
 void Gate::openGate()
 {
-    
+    *gateIsClosed = false;
 }
-
 void Gate::closeGate()
 {
-    
+    *gateIsClosed = true;
+}
+bool Gate::getGateStatus()
+{
+    return *gateIsClosed;
+}
+void Gate::setGateStatus(bool status)
+{
+    *gateIsClosed = status;
 }
 
-std::string Gate::getGateStatus() const
+//Destructor
+Gate::~Gate()
 {
-    return this->gateStatus;
+    delete gateID;
+    delete gateIsClosed;
 }
 
-void Gate::setGateStatus(std::string status)
+//Other gate functions
+int getClosedGateCount(Gate g[], int arraySize)
 {
+    int closedGateCount = 0;
     
-}
-
-void Gate::readGateData()
-{
-    
+    for (int i = 0; i < arraySize; i++)
+        if (g[i].getGateStatus() == true)
+            closedGateCount++;
+    return closedGateCount;
 }
 

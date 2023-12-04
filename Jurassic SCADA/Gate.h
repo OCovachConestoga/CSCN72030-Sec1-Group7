@@ -6,21 +6,33 @@
 // Gate class declaration
 
 #pragma once
+#include "Ui_JurassicSCADA.h"
 #include <string>
+#define NUMBER_OF_GATES 8
+using namespace std;
 
-class Gate {
+class Gate
+{
+    int* gateID;
+    bool* gateIsClosed;
+
 public:
-    Gate();
-    Gate(std::string dataFileName, std::string gateStatus);
-    ~Gate();
+    //Contructors
+    Gate(QWidget* parent = nullptr);
+    Gate(int, bool);
+    Gate(const Gate& other);
 
+    // Copy assignment operator
+    Gate& operator=(const Gate& other);
+
+    //Getters and Setters
     void openGate();
     void closeGate();
-    std::string getGateStatus() const;
-    void setGateStatus(std::string status);
-    void readGateData();
+    bool getGateStatus();
+    void setGateStatus(bool status);
 
-private:
-    std::string dataFileName;
-    std::string gateStatus;
+    //Destructor
+    ~Gate();
 };
+
+int getClosedGateCount(Gate[], int);
