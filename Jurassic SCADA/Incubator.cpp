@@ -6,30 +6,36 @@
 // Incubator class function definitions
 
 #include "Incubator.h"
-#include "FileManagement.h"
 
-Incubator::Incubator()
-{
-    
+
+Incubator::Incubator(QWidget* parent) {
+	this->temperature = new float;
+	this->realTemperature = new float;
+	this->loadingTemp = new QString;
+	*this->temperature = 0;
+	*this->realTemperature = false;
+	*this->loadingTemp = "No loading info";
 }
 
-Incubator::Incubator(std::string dataFileName, float temperature)
-{
-    
+Incubator::Incubator(float temperature, QString loading){
+	this->temperature = new float;
+	this->realTemperature = new float;
+	this->loadingTemp = new QString;
+	*this->temperature = temperature;
+	*this->realTemperature = temperature;
+	*this->loadingTemp = loading;
+
+	
 }
 
-Incubator::~Incubator()
-{
-    
+Incubator::~Incubator() {}
+
+float Incubator::getTemperature() const {
+    return *this->temperature;
 }
 
-float Incubator::getTemperature() const
-{
-    return this->temperature;
+void Incubator::setTemperature(float newTemperature) {
+    *this->temperature = newTemperature;
 }
 
-void readIncubatorData()
-{
-    
-}
 

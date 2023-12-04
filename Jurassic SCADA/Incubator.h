@@ -7,18 +7,29 @@
 
 #pragma once
 #include <string>
+#include <QObject>
+#include <QWidget>
+#include <QLabel>
+#include <QPushButton>
+#include "FileManagement.h"
+#include "ui_JurassicSCADA.h"
 
-/* abstract */ class Incubator {
+
+class Incubator {
+    
 public:
-    Incubator();
-    Incubator(std::string dataFileName, float temperature);
-    /* virtual */ ~Incubator();
+    Incubator(QWidget* parent = nullptr);
+    Incubator(float, QString);
+    ~Incubator();
 
     float getTemperature() const;
-    /* virtual */ void readIncubatorData();
+    void setTemperature(float);
+
+signals:
+    void temperatureChanged(float);
 
 private:
-    std::string dataFileName;
-    float temperature;
-    float realtemperature;
+    float* temperature;
+    float* realTemperature;
+    QString* loadingTemp;
 };

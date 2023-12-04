@@ -7,20 +7,31 @@
 
 #pragma once
 #include <string>
+#include "Car.h"
+#include <vector>
+#include "ui_JurassicSCADA.h"
 
 class Monorail {
 public:
-    Monorail();
-    Monorail(std::string dataFileName, bool poweredStatus);
+    Monorail(QWidget* parent = nullptr);
+    Monorail(bool);
     ~Monorail();
 
-    bool getPoweredStatus() const;
-    void setPoweredStatus(bool status);
+    bool getPowerStatus() const;
+    void setPowerStatus(bool status);
 
-    void readMonorailData();
+    const std::vector<Car>& getCars() const;
+
+    //bool getCarDoorsLockedStatus(size_t carIndex) const;
+    //void setCarDoorsLockedStatus(size_t carIndex, bool locked);
+
+    void addCar(const Car& car);
+public slots:
+
 
 private:
-    std::string dataFileName;
-    bool poweredStatus;
+
+    bool* powerStatus;
+    std::vector<Car> cars;
 };
 

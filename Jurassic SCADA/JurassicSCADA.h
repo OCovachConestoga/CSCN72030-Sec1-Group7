@@ -3,11 +3,18 @@
 #include "ui_JurassicSCADA.h"
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QLabel>
+#include <QObject>
 #include <stdbool.h>
 #include "Camera.h"
 #include "Gate.h"
 #include "ElectricFence.h"
 #include "FileManagement.h"
+#include "Incubator.h"
+#include "Car.h"
+#include "Monorail.h"
+#include <Qtimer.h>
 
 #define MAXCAMERAS	6
 
@@ -20,11 +27,17 @@ public:
     ~JurassicSCADA();
 
 private:
-    Ui::JurassicSCADA ui;
+    Ui::JurassicSCADA ui;	
 	Camera* cameraArray;
 	Gate* gateArray;
 	ElectricFence* fenceArray;
 	FileManagement* FileArray;
+	Incubator* incubator;
+	Monorail* monorail;
+	Car* car;
+	QTimer* fuelUpdateTimer;
+	QTimer* temperatureChangeTimer;
+
 
 public slots:
 	
@@ -40,7 +53,6 @@ public slots:
 	void on_camerabtnClicked(Camera, FileManagement);
 	void on_nightVisionToggle_clicked();
 	void on_nightVisionbtnClicked(Camera*, FileManagement);
-	// ******************************************
 
 	// ********* Gate Button handlers *********
 	void on_gatesbtn_clicked();
@@ -54,9 +66,8 @@ public slots:
 	void on_gate7btn_clicked();
 	void on_gate8btn_clicked();
 	void changeGateCountDisplay(Gate[], int);
-	// ******************************************
 
-		// ********* Fence Button handlers *********
+    // ********* Fence Button handlers *********
 	void on_fencebtn_clicked();
 	void on_fencebackbtn_clicked();
 	void on_fence1btn_clicked();
@@ -84,5 +95,22 @@ public slots:
 	void on_fence8incbtn_clicked();
 	void on_fence8decbtn_clicked();
 	void changeFenceCountDisplay(ElectricFence[], int);
-	// ******************************************
+
+	// ********* Incubator Button Handlers ******
+	void on_incubatorbtn_clicked();
+	void on_incubatorBackbtn_clicked();
+	void on_btnIncrease_clicked();
+	void on_btnDecrease_clicked();
+	void updateTemperature(float newTemperature);
+	void handleTemperatureChange();
+
+	// ********* Monorail Button Handlers *******
+	void on_monorailbtn_clicked();
+	void on_monorailBackbtn_clicked();
+	void updatelblPowerStatus(bool);
+	void on_monorailPowerbtn_clicked();
+	void on_refuel1btn_clicked();
+	void on_refuel2btn_clicked();
+	void on_refuel3btn_clicked();
+	void updateFuelReserves();
 };
