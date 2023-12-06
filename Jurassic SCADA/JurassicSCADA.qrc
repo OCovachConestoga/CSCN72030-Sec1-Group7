@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="/JurassicSCADA">
+    <file>weather icon.png</file>
+    <file>food icon.png</file>
     <file>Incubator arm.png</file>
     <file>Monorail icon.png</file>
     <file>Camera.png</file>
